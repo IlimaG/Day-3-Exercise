@@ -15,8 +15,11 @@ function costeAlquilerCoche(num) {
     if (num >= 7) {
         result = (num * 40) - 50
         return result
+    } else {
+        return num * 40
     }
 }
+
 
 function costeAvion(city, num) {
     let result = 0
@@ -45,23 +48,20 @@ const carCost = document.querySelector("#car")
 const totalCost = document.querySelector("#TotalCost")
 
 
-function caluclarCoste(city1, num) {
-    city1 = city.value
-    num = nights.value
-    
-    calculateCost.onclick = () => {
-    costeHotel(num)
-    costeAlquilerCoche(num)
-    costeAvion(city1, num)
+function caluclarCoste() {
 
-    hotelCost.value = costeHotel(num)
-}
+    hotelCost.value = costeHotel(numNights.value)
+    travelCost.value = costeAvion(city.value, numNights.value)
+    carCost.value = costeAlquilerCoche(numNights.value)
+    totalCost.value = Number(hotelCost.value)  + Number(travelCost.value) + Number(carCost.value)
 
 }
 
 
+calculateCost.onclick = () => {
+    caluclarCoste()     
+}
 
-// calculateCost.onclick = () => {
-    
-// }
+
+
 
